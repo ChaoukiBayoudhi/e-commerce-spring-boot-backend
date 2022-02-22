@@ -26,7 +26,7 @@ public class Product {
     @NonNull //label est obligatoire
     private String label;
     @NonNull
-    @Column(precision = 3) //3 chiffres après virgules
+    @Column(precision = 7, scale = 3) //7 chiffres en total y compris 3 chiffres après virgules
     private double price;
     @NonNull
     @EqualsAndHashCode.Include
@@ -36,6 +36,7 @@ public class Product {
     @EqualsAndHashCode.Include
     @JsonFormat(pattern ="yyyy-MM-dd")
     private LocalDate fabricationDate;
+    @Column(columnDefinition = "integer default 0")//specifier une valeur par defaut
     private int stock;
     private String description;
     @Lob
