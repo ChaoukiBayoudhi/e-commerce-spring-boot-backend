@@ -1,8 +1,11 @@
 package tn.esb.bi2.ecommerceApi.Domains;
 
 import lombok.*;
+import tn.esb.bi2.ecommerceApi.Enumerations.CustomerType;
 
 import javax.persistence.*;
+import java.util.Objects;
+
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -17,8 +20,22 @@ public class Customer {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private CustomerType type;
 
     @OneToOne (mappedBy = "customer",cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_address",referencedColumnName="id")
     private Address address;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return firstName.equals(customer.firstName) && lastName.equals(customer.lastName) && email.equals(customer.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, type, address);
+    }
 }
