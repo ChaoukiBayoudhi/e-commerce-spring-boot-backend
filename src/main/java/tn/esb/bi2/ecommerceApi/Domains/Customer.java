@@ -18,9 +18,13 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NonNull
     private String firstName;
+    @NonNull
     private String lastName;
+    @NonNull
     private String email;
+    @NonNull
     private String phoneNumber;
     @Column(name="customer_type", length = 20, columnDefinition = "varchar(20) default 'NORMAL'")
     @Enumerated(EnumType.STRING)
@@ -32,6 +36,7 @@ public class Customer {
     private Address address;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @ToString.Exclude
     Set<Command> commands = new HashSet<>();
 
 
