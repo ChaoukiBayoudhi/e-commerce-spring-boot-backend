@@ -36,7 +36,7 @@ public class Product {
     @EqualsAndHashCode.Include
     @JsonFormat(pattern ="yyyy-MM-dd")
     private LocalDate fabricationDate;
-    @Column(columnDefinition = "integer default 0")//specifier une valeur par defaut
+    @Column(columnDefinition = "int default 0")//specifier une valeur par defaut
     private int stock;
     private String description;
     @Lob
