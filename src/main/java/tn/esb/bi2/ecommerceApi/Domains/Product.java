@@ -6,6 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter //genère au moment du runtime tous les getters pour tous les attributs
 @Setter
 @NoArgsConstructor //genère un constructeur non parametré
@@ -41,5 +44,8 @@ public class Product {
     private String description;
     @Lob
     private byte[] image;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    Set<Command> commands = new HashSet<>();
 
 }

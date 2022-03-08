@@ -4,7 +4,9 @@ import lombok.*;
 import tn.esb.bi2.ecommerceApi.Enumerations.CustomerType;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,6 +30,10 @@ public class Customer {
     @OneToOne (mappedBy = "customer",cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_address",referencedColumnName="id")
     private Address address;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    Set<Command> commands = new HashSet<>();
+
 
     @Override
     public boolean equals(Object o) {

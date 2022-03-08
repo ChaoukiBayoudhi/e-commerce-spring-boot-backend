@@ -2,10 +2,8 @@ package tn.esb.bi2.ecommerceApi.Domains;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -14,7 +12,20 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Entity
 public class Command {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId //clé primaire composite
+    private CommandId id;
+    @Column(columnDefinition = "int default 1")
+    private Integer quantity;
+    @Column(name = "command_date")
+    private LocalDate date;
+
+    @ManyToOne
+    @MapsId("idProduct")//cette instance de product est lié à une partie
+    // de la clé primaire composite (idProduct)
+    private Product product;
+
+    @ManyToOne
+    @MapsId("idCustomer")
+    private Customer customer;
+
 }
