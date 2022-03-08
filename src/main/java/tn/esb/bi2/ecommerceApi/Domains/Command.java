@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,5 +29,8 @@ public class Command {
     @ManyToOne
     @MapsId("idCustomer")
     private Customer customer;
+
+    @OneToMany(mappedBy = "command",cascade = CascadeType.ALL)
+    private Set<Delivery> commandDeliveries=new HashSet<>();
 
 }
