@@ -23,16 +23,17 @@ public class Command {
     @Column(name = "command_date")
     private LocalDate date;
 
-    @NonNull
+
+    //@NonNull
+    @ManyToOne
+    @MapsId("idCustomer")
+    private Customer customer;
+
+    //@NonNull
     @ManyToOne
     @MapsId("idProduct")//cette instance de product est lié à une partie
     // de la clé primaire composite (idProduct)
     private Product product;
-
-    @NonNull
-    @ManyToOne
-    @MapsId("idCustomer")
-    private Customer customer;
 
     @OneToMany(mappedBy = "command",cascade = CascadeType.ALL)
     @ToString.Exclude

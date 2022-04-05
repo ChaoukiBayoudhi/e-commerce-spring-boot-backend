@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 //@Table(name = "provider_tab") //permet de personnaliser la table au moment de generation du code SQL par l'ORM
 //on peut preciser son nom (par defaut c'est le nom de la classe, les contraintes unique
-@Table(name="provider_tab",uniqueConstraints = { @UniqueConstraint(name = "UniqueNameAndEmailConstraint", columnNames = { "email", "name" }) })
+@Table(name="provider_tab",uniqueConstraints = { @UniqueConstraint(name = "UniqueNameAndEmailConstraint", columnNames = { "email", "provider_name" }) })
 //permet d'ajouter une containte nommée 'UniqueNameAndEmailConstraint' précisant que les colonnes nom et email sont uniques
 public class Provider {
     @Id

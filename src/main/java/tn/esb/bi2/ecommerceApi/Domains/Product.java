@@ -46,6 +46,6 @@ public class Product {
     private byte[] image;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    Set<Command> commands = new HashSet<>();
+    private Set<Command> commands = new HashSet<>();
 
 }

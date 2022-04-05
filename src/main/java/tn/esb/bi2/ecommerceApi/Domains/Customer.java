@@ -37,7 +37,7 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     @ToString.Exclude
-    Set<Command> commands = new HashSet<>();
+    private Set<Command> commands = new HashSet<>();
 
 
     @Override

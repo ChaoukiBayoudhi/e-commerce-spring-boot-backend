@@ -33,8 +33,8 @@ public class Delivery {
     //specifier la clé étrangère composite
     @JoinColumns(
             {
-                    @JoinColumn(name = "product_id", referencedColumnName = "idProduct"),
-                    @JoinColumn(name = "customer_id", referencedColumnName = "idCustomer")
+                    @JoinColumn(name = "product_id", referencedColumnName = "product_id"),
+                    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
             }
     )
     private Command command;
