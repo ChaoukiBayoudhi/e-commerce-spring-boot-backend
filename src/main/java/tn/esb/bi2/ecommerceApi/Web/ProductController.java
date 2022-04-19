@@ -25,6 +25,8 @@ public class ProductController {
         return productServ.getAllProducts();
     }
     @GetMapping("/{id}")
+    //url=http://localhost:9592/products/5
+
     public Product getProductById(@PathVariable Long id)throws Exception {
         return productServ.getProduct(id);
     }
